@@ -19,6 +19,8 @@ background:#0b0b0b;
 color:white;
 }
 
+/* HEADER */
+
 header{
 display:flex;
 justify-content:space-between;
@@ -44,6 +46,8 @@ transition:.3s;
 nav a:hover{
 color:#1e90ff;
 }
+
+/* HERO */
 
 .hero{
 height:70vh;
@@ -73,6 +77,8 @@ color:white;
 cursor:pointer;
 border-radius:5px;
 }
+
+/* SECTIONS */
 
 section{
 padding:80px 10%;
@@ -105,24 +111,33 @@ color:#1e90ff;
 margin-bottom:10px;
 }
 
-/* GALLERY SLIDESHOW */
+/* GALLERY */
 
 .gallery{
-max-width:900px;
+max-width:1100px;
 margin:auto;
 position:relative;
+overflow:hidden;
+}
+
+.carousel{
+display:flex;
+transition:transform .6s ease;
 }
 
 .slide{
-display:none;
+min-width:100%;
+padding:10px;
 }
 
 .slide img{
 width:100%;
-border-radius:8px;
+height:500px;
+object-fit:cover;
+border-radius:10px;
 }
 
-/* arrows */
+/* ARROWS */
 
 .prev, .next{
 cursor:pointer;
@@ -130,22 +145,30 @@ position:absolute;
 top:50%;
 padding:16px;
 color:white;
-font-size:25px;
+font-size:30px;
 background:rgba(0,0,0,0.5);
 transform:translateY(-50%);
+z-index:10;
 }
 
-.prev{
-left:0;
-}
-
-.next{
-right:0;
-}
+.prev{ left:10px; }
+.next{ right:10px; }
 
 .prev:hover, .next:hover{
 background:#1e90ff;
 }
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact p{
+margin:10px 0;
+}
+
+/* FOOTER */
 
 footer{
 background:#000;
@@ -178,6 +201,7 @@ margin-top:50px;
 </section>
 
 <section id="services">
+
 <h2 class="section-title">Our Services</h2>
 
 <div class="services">
@@ -211,41 +235,48 @@ margin-top:50px;
 
 <div class="gallery">
 
-<!-- ADD YOUR PICTURES BELOW -->
-<!-- Replace pic1.jpg etc with your real pictures -->
+<div class="carousel" id="carousel">
+
+<!-- ================================================= -->
+<!-- ADD / REPLACE YOUR PICTURES HERE                  -->
+<!-- You can add as many pictures as you want          -->
+<!-- Make sure they are inside the /pictures folder    -->
+<!-- ================================================= -->
 
 <div class="slide">
-<img src="./pictures/picture1before.png" alt="Painting work 1">
+<img src="./pictures/picture1before.png">
 </div>
 
 <div class="slide">
-<img src="./pictures/picture1after.png" alt="Painting work 2">
+<img src="./pictures/picture1after.png">
 </div>
 
 <div class="slide">
-<img src="./pictures/picture3before.png" alt="Painting work 3">
+<img src="./pictures/picture3before.png">
 </div>
 
 <div class="slide">
-<img src="./pictures/picture3after.png" alt="Painting work 4">
+<img src="./pictures/picture3after.png">
 </div>
 
 <div class="slide">
-<img src="./pictures/picture2before.png" alt="Painting work 5">
+<img src="./pictures/picture2before.png">
 </div>
 
 <div class="slide">
-<img src="./pictures/picture2before2.png" alt="Painting work 6">
+<img src="./pictures/picture2before2.png">
 </div>
 
 <div class="slide">
-<img src="./pictures/picture2after.png" alt="Painting work 6">
+<img src="./pictures/picture2after.png">
 </div>
 
-<!-- END PICTURE AREA -->
+<!-- ================================================= -->
 
-<a class="prev" onclick="changeSlide(-1)">❮</a>
-<a class="next" onclick="changeSlide(1)">❯</a>
+</div>
+
+<a class="prev" onclick="moveSlide(-1)">❮</a>
+<a class="next" onclick="moveSlide(1)">❯</a>
 
 </div>
 
@@ -255,9 +286,11 @@ margin-top:50px;
 
 <h2 class="section-title">Contact Us</h2>
 
-<p style="text-align:center;">📞 Phone: (555) 123-4567</p>
-<p style="text-align:center;">📧 Email: info@rollinready.com</p>
-<p style="text-align:center;">📍 Your City, State</p>
+<div class="contact">
+<p>📞 Phone: (555) 123-4567</p>
+<p>📧 Email: info@rollinready.com</p>
+<p>📍 Your City, State</p>
+</div>
 
 </section>
 
@@ -267,34 +300,33 @@ margin-top:50px;
 
 <script>
 
-let slideIndex = 0;
-showSlides();
+let index = 0;
 
-function showSlides(){
+const carousel = document.getElementById("carousel");
+const slides = document.querySelectorAll(".slide");
 
-let slides = document.getElementsByClassName("slide");
-
-for(let i=0;i<slides.length;i++){
-slides[i].style.display="none";
+function updateCarousel(){
+carousel.style.transform = "translateX(" + (-index * 100) + "%)";
 }
 
-slideIndex++;
+function moveSlide(direction){
 
-if(slideIndex > slides.length){
-slideIndex = 1;
+index += direction;
+
+if(index < 0){
+index = slides.length - 1;
 }
 
-slides[slideIndex-1].style.display="block";
-
-setTimeout(showSlides,7000); // 7 second timer
+if(index >= slides.length){
+index = 0;
 }
 
-function changeSlide(n){
-
-slideIndex += n - 1;
-showSlides();
-
+updateCarousel();
 }
+
+setInterval(()=>{
+moveSlide(1);
+},7000);
 
 </script>
 
