@@ -36,6 +36,13 @@ font-weight:bold;
 color:#1e90ff;
 }
 
+.logo img {
+    height: 50px; /* Adjust as needed */
+    width: auto;  /* Maintain aspect ratio */
+    vertical-align: middle; /* Aligns with text */
+    margin-right: 10px; /* Space between logo and text */
+}
+
 nav a{
 margin-left:25px;
 text-decoration:none;
@@ -178,13 +185,87 @@ border-top:2px solid #1e90ff;
 margin-top:50px;
 }
 
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media screen and (max-width: 768px) {
+
+  /* Header: stack logo and nav */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 5%;
+  }
+
+  nav {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  nav a {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
+  /* Hero */
+  .hero {
+    height: auto;
+    padding: 50px 5%;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+
+  /* Sections padding */
+  section {
+    padding: 50px 5%;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  /* Services grid */
+  .services {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Gallery images */
+  .slide img {
+    height: 300px; /* smaller for mobile */
+  }
+
+  /* Footer */
+  footer {
+    padding: 15px 5%;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">ROLLIN READY INC.</div>
+<div class="logo">
+    <img src="./pictures/logo-half-bg.png" alt="Rollin Ready Inc Logo">
+    ROLLIN READY INC.
+  </div>
 
 <nav>
 <a href="#">Home</a>
