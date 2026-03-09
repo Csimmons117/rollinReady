@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rollin Ready Inc.</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:#000;
+border-bottom:2px solid #1e90ff;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#1e90ff;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav a:hover{
+color:#1e90ff;
+}
+
+.hero{
+height:70vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:55px;
+color:#1e90ff;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:25px;
+}
+
+.btn{
+padding:14px 30px;
+background:#1e90ff;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+section{
+padding:80px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:36px;
+color:#1e90ff;
+margin-bottom:50px;
+}
+
+/* SERVICES */
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#111;
+padding:30px;
+border-radius:8px;
+border:1px solid #1e90ff30;
+}
+
+.card h3{
+color:#1e90ff;
+margin-bottom:10px;
+}
+
+/* GALLERY SLIDESHOW */
+
+.gallery{
+max-width:900px;
+margin:auto;
+position:relative;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:100%;
+border-radius:8px;
+}
+
+/* arrows */
+
+.prev, .next{
+cursor:pointer;
+position:absolute;
+top:50%;
+padding:16px;
+color:white;
+font-size:25px;
+background:rgba(0,0,0,0.5);
+transform:translateY(-50%);
+}
+
+.prev{
+left:0;
+}
+
+.next{
+right:0;
+}
+
+.prev:hover, .next:hover{
+background:#1e90ff;
+}
+
+footer{
+background:#000;
+text-align:center;
+padding:20px;
+border-top:2px solid #1e90ff;
+margin-top:50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">ROLLIN READY INC.</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Rollin Ready Inc.</h1>
+<p>Professional Painting & Surface Solutions</p>
+<button class="btn">Get a Free Quote</button>
+</section>
+
+<section id="services">
+<h2 class="section-title">Our Services</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>Residential Painting</h3>
+<p>Interior and exterior painting done professionally.</p>
+</div>
+
+<div class="card">
+<h3>Commercial Projects</h3>
+<p>Reliable painting for offices and commercial spaces.</p>
+</div>
+
+<div class="card">
+<h3>Surface Prep</h3>
+<p>Cleaning, sanding, and priming for long lasting results.</p>
+</div>
+
+<div class="card">
+<h3>Custom Finishes</h3>
+<p>Accent walls and detailed finishing work.</p>
+</div>
+
+</div>
+</section>
+
+<section id="gallery">
+
+<h2 class="section-title">Our Work</h2>
+
+<div class="gallery">
+
+<!-- ADD YOUR PICTURES BELOW -->
+<!-- Replace pic1.jpg etc with your real pictures -->
+
+<div class="slide">
+<img src="pic1.jpg" alt="Painting work 1">
+</div>
+
+<div class="slide">
+<img src="pic2.jpg" alt="Painting work 2">
+</div>
+
+<div class="slide">
+<img src="pic3.jpg" alt="Painting work 3">
+</div>
+
+<div class="slide">
+<img src="pic4.jpg" alt="Painting work 4">
+</div>
+
+<div class="slide">
+<img src="pic5.jpg" alt="Painting work 5">
+</div>
+
+<div class="slide">
+<img src="pic6.jpg" alt="Painting work 6">
+</div>
+
+<!-- END PICTURE AREA -->
+
+<a class="prev" onclick="changeSlide(-1)">❮</a>
+<a class="next" onclick="changeSlide(1)">❯</a>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2 class="section-title">Contact Us</h2>
+
+<p style="text-align:center;">📞 Phone: (555) 123-4567</p>
+<p style="text-align:center;">📧 Email: info@rollinready.com</p>
+<p style="text-align:center;">📍 Your City, State</p>
+
+</section>
+
+<footer>
+<p>© 2026 Rollin Ready Inc.</p>
+</footer>
+
+<script>
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides(){
+
+let slides = document.getElementsByClassName("slide");
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+
+slideIndex++;
+
+if(slideIndex > slides.length){
+slideIndex = 1;
+}
+
+slides[slideIndex-1].style.display="block";
+
+setTimeout(showSlides,7000); // 7 second timer
+}
+
+function changeSlide(n){
+
+slideIndex += n - 1;
+showSlides();
+
+}
+
+</script>
+
+</body>
+</html>
