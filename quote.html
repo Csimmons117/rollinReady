@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rollin Ready Inc.</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:#000;
+border-bottom:2px solid #1e90ff;
+}
+.logoa{
+	text-decoration:none;
+	color:#1e90ff;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#1e90ff;
+}
+
+.logo img {
+    height: 50px; /* Adjust as needed */
+    width: auto;  /* Maintain aspect ratio */
+    vertical-align: middle; /* Aligns with text */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav a:hover{
+color:#1e90ff;
+}
+
+.quotetitle{
+	font-size: 40px;
+	text-align: center;
+	padding-top: 100px;
+	color:#1e90ff;
+}
+.quote{ 
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.formQuote{
+    font-size: 13px;
+    margin: 0 auto;
+}
+label
+{
+	font-size: 30px;
+	color:#1e90ff;
+}
+
+input{
+	width: 100%;
+	font-size: 30px;
+	color:white;
+	background:#0b0b0b;
+	padding: 40px;
+}
+textarea{
+	width: 100%;
+	font-size: 30px;
+	color:white;
+	background:#0b0b0b;
+	padding: 40px;
+}
+button{
+	color:#1e90ff;
+	background:#0b0b0b;
+	font-size: 30px;
+
+
+}
+
+
+
+.submitme:hover{
+	color:#0b0b0b;
+	background:#1e90ff;
+
+}
+
+</style>
+</head>
+
+<body>
+<header>
+<div class="logo">
+    <a class="logoa" href="./index.html"><img src="./pictures/logo-half-bg.png" alt="Rollin Ready Inc Logo"></a>
+    <a  class="logoa" href="./index.html">ROLLIN READY INC.</a>
+  </div>
+
+<nav>
+<a href="./index.html">Home</a>
+<a href="./index.html#services">Services</a>
+<a href="./index.html#gallery">Gallery</a>
+<a href="./index.html#contact">Contact</a>
+</nav>
+</header>
+<div class=quotetitle>
+	<h3>Make a quote today!</h3>
+</div>
+<div class="quote"> 
+	<div class="formQuote">
+     	<form>
+  			<label for="fullname">Full name:</label><br>
+  			<input type="text" id="fullname" name="fullname"><br></br>
+  			<label for="contactinfo">Please leave the best way to reach:</label><br>
+  			<input type="text" id="contactinfo" name="contactinfo"></br></br>
+  			<label for="reason">Please explain want you are looking for:</label><br>
+  			<textarea type="textarea" id="reason" name="reason"></textarea></br></br>
+
+  			<button class ="submitme" type="submit" value="Submit">Submit</button>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
