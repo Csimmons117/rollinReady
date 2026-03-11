@@ -200,24 +200,23 @@ background:#0f6ed6;
 
 const form = document.querySelector("form");
 
-form.addEventListener("submit", async function(e){
+form.addEventListener("submit", function(e){
+  e.preventDefault();
 
-e.preventDefault();
+  const formData = new FormData(form);
 
-const data = {
-    fullname: document.getElementById("fullname").value,
-    contactinfo: document.getElementById("contactinfo").value,
-    reason: document.getElementById("reason").value
-};
-
-await fetch("https://script.google.com/macros/s/AKfycbygRFa4CqtqKSb5OvE60xTA0PIYsKU9vN-JqSJEIPshVrNqHUijNp_adGAF0IFjMJUI/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbygRFa4CqtqKSb5OvE60xTA0PIYsKU9vN-JqSJEIPshVrNqHUijNp_adGAF0IFjMJUI/exec", {
     method: "POST",
-    body: JSON.stringify(data)
-});
-
-alert("Quote submitted successfully!");
-
-form.reset();
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    alert("Quote submitted successfully!");
+    form.reset();
+  })
+  .catch(error => {
+    console.error("Error!", error.message);
+  });
 
 });
 
