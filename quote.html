@@ -6,6 +6,7 @@
 <title>Rollin Ready Inc.</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -17,6 +18,9 @@ body{
 background:#0b0b0b;
 color:white;
 }
+
+/* HEADER */
+
 header{
 display:flex;
 justify-content:space-between;
@@ -25,28 +29,30 @@ padding:20px 10%;
 background:#000;
 border-bottom:2px solid #1e90ff;
 }
+
 .logoa{
-	text-decoration:none;
-	color:#1e90ff;
+text-decoration:none;
+color:#1e90ff;
 }
 
 .logo{
-font-size:24px;
+display:flex;
+align-items:center;
+font-size:22px;
 font-weight:bold;
 color:#1e90ff;
 }
 
-.logo img {
-    height: 50px; /* Adjust as needed */
-    width: auto;  /* Maintain aspect ratio */
-    vertical-align: middle; /* Aligns with text */
-    margin-right: 10px; /* Space between logo and text */
+.logo img{
+height:50px;
+margin-right:10px;
 }
 
 nav a{
 margin-left:25px;
 text-decoration:none;
 color:white;
+font-size:15px;
 transition:.3s;
 }
 
@@ -54,67 +60,104 @@ nav a:hover{
 color:#1e90ff;
 }
 
+/* TITLE */
+
 .quotetitle{
-	font-size: 40px;
-	text-align: center;
-	padding-top: 100px;
-	color:#1e90ff;
+text-align:center;
+padding:70px 20px 30px 20px;
 }
-.quote{ 
-    display: flex;
-    align-items: center;
-    padding-top: 100px;
+
+.quotetitle h3{
+font-size:36px;
+color:#1e90ff;
+font-weight:600;
+}
+
+/* FORM SECTION */
+
+.quote{
+display:flex;
+justify-content:center;
+padding:20px;
 }
 
 .formQuote{
-    font-size: 13px;
-    margin: 0 auto;
-}
-label
-{
-	font-size: 30px;
-	color:#1e90ff;
+background:#111;
+padding:40px;
+border-radius:10px;
+width:100%;
+max-width:600px;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+border:1px solid #1e90ff33;
 }
 
-input{
-	width: 100%;
-	font-size: 30px;
-	color:white;
-	background:#0b0b0b;
-	padding: 40px;
+/* FORM ELEMENTS */
+
+label{
+display:block;
+font-size:15px;
+margin-bottom:8px;
+margin-top:18px;
+color:#1e90ff;
 }
+
+input,
 textarea{
-	width: 100%;
-	font-size: 30px;
-	color:white;
-	background:#0b0b0b;
-	padding: 40px;
+width:100%;
+padding:14px;
+font-size:15px;
+border-radius:6px;
+border:1px solid #333;
+background:#0b0b0b;
+color:white;
+outline:none;
+transition:.25s;
 }
+
+input:focus,
+textarea:focus{
+border-color:#1e90ff;
+box-shadow:0 0 6px #1e90ff44;
+}
+
+textarea{
+min-height:140px;
+resize:vertical;
+}
+
+/* BUTTON */
+
 button{
-	color:#1e90ff;
-	background:#0b0b0b;
-	font-size: 30px;
-
-
+margin-top:25px;
+width:100%;
+padding:14px;
+font-size:16px;
+font-weight:bold;
+border:none;
+border-radius:6px;
+background:#1e90ff;
+color:white;
+cursor:pointer;
+transition:.3s;
 }
 
-
-
-.submitme:hover{
-	color:#0b0b0b;
-	background:#1e90ff;
-
+button:hover{
+background:#0f6ed6;
 }
 
 </style>
 </head>
 
 <body>
+
 <header>
+
 <div class="logo">
-    <a class="logoa" href="./index.html"><img src="./pictures/logo-half-bg.png" alt="Rollin Ready Inc Logo"></a>
-    <a  class="logoa" href="./index.html">ROLLIN READY INC.</a>
-  </div>
+<a class="logoa" href="./index.html">
+<img src="./pictures/logo-half-bg.png" alt="Rollin Ready Inc Logo">
+</a>
+<a class="logoa" href="./index.html">ROLLIN READY INC.</a>
+</div>
 
 <nav>
 <a href="./index.html">Home</a>
@@ -122,24 +165,61 @@ button{
 <a href="./index.html#gallery">Gallery</a>
 <a href="./index.html#contact">Contact</a>
 </nav>
-</header>
-<div class=quotetitle>
-	<h3>Make a quote today!</h3>
-</div>
-<div class="quote"> 
-	<div class="formQuote">
-     	<form>
-  			<label for="fullname">Full name:</label><br>
-  			<input type="text" id="fullname" name="fullname"><br></br>
-  			<label for="contactinfo">Please leave the best way to reach:</label><br>
-  			<input type="text" id="contactinfo" name="contactinfo"></br></br>
-  			<label for="reason">Please explain want you are looking for:</label><br>
-  			<textarea type="textarea" id="reason" name="reason"></textarea></br></br>
 
-  			<button class ="submitme" type="submit" value="Submit">Submit</button>
-		</form>
-	</div>
+</header>
+
+<div class="quotetitle">
+<h3>Request a Quote</h3>
+</div>
+
+<div class="quote">
+
+<div class="formQuote">
+
+<form>
+
+<label for="fullname">Full Name</label>
+<input type="text" id="fullname" name="fullname" required>
+
+<label for="contactinfo">Best Way to Reach You</label>
+<input type="text" id="contactinfo" name="contactinfo" required>
+
+<label for="reason">What are you looking for?</label>
+<textarea id="reason" name="reason" required></textarea>
+
+<button type="submit">Submit Request</button>
+
+</form>
+
+</div>
+
 </div>
 
 </body>
+<script>
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const data = {
+    fullname: document.getElementById("fullname").value,
+    contactinfo: document.getElementById("contactinfo").value,
+    reason: document.getElementById("reason").value
+};
+
+await fetch("https://script.google.com/macros/s/AKfycbygRFa4CqtqKSb5OvE60xTA0PIYsKU9vN-JqSJEIPshVrNqHUijNp_adGAF0IFjMJUI/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+});
+
+alert("Quote submitted successfully!");
+
+form.reset();
+
+});
+
+</script>
 </html>
